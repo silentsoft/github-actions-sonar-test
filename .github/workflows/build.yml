@@ -36,4 +36,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Pcoverage -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=silentsoft -Dsonar.projectKey=silentsoft_github-actions-sonar-test -Dsonar.coverage.exclusions=**/*Application.java
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Pcoverage -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=silentsoft -Dsonar.projectKey=silentsoft_github-actions-sonar-test -Dsonar.sources=src/main/java,src/main/react -Dsonar.coverage.exclusions=**/*Application.java,**/index.*,**/setupTests.*,**/*.d.ts,**/__tests__/**/*,**/*.spec.*,**/*.test.* -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
